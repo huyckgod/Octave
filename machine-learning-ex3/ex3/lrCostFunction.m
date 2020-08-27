@@ -40,6 +40,12 @@ grad = zeros(size(theta));
 
 
 
+hypo = sigmoid(theta'*(X'));
+
+J = (sum(-y'.*log(hypo)-(1-y').*log(1-hypo))/m)+(lambda*(sum(theta(2:end).^2)/(2*m)));
+grad = (sum((hypo'-y).*X)'/m)+[[0];((lambda.*theta(2:end))/m)];
+
+
 
 
 
